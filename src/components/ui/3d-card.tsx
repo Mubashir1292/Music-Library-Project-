@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -120,10 +122,6 @@ export const CardItem = ({
   const ref = useRef<HTMLDivElement>(null);
   const [isMouseEntered] = useMouseEnter();
 
-  useEffect(() => {
-    handleAnimations();
-  }, [isMouseEntered]);
-
   const handleAnimations = () => {
     if (!ref.current) return;
     if (isMouseEntered) {
@@ -132,6 +130,10 @@ export const CardItem = ({
       ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
     }
   };
+
+  useEffect(() => {
+    handleAnimations();
+  }, [handleAnimations, isMouseEntered]);
 
   return (
     <Tag

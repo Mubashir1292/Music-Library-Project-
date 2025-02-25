@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-const */
 import { cn } from "@/lib/utils";
 import React, { useEffect, useRef } from "react";
@@ -185,7 +187,7 @@ export const Vortex = (props: VortexProps) => {
     return x > canvas.width || x < 0 || y > canvas.height || y < 0;
   };
 
-  const resize = (canvas: HTMLCanvasElement) => {
+  const resize = (canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
     const { innerWidth, innerHeight } = window;
 
     canvas.width = innerWidth;
@@ -228,7 +230,7 @@ export const Vortex = (props: VortexProps) => {
       const canvas = canvasRef.current;
       const ctx = canvas?.getContext("2d");
       if (canvas && ctx) {
-        resize(canvas);
+        resize(canvas, ctx);
       }
     });
   }, []);
